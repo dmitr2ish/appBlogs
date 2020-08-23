@@ -87,23 +87,33 @@ function updateNextTable(id) {
 }
 
 function addPost(e) {
-    e.preventDefault();
+    let str = getVal();
+    const checkSpace = str.trim() == '';
+    const checkMaxSize = str.toString().length > 200;
 
-    let post = {
-        content: $('#addContent').val()
-    }
+    if (checkSpace){
+        alert("Содержание пусто");
+    } else if (checkMaxSize) {
+        alert("Вы превысили 200 символов в содержании");
+    } else {
+        e.preventDefault();
 
-    $.ajax({
-        url: '/api/post/add',
-        method: 'POST',
-        dataType: 'json',
-        contentType: 'application/json',
-        data: JSON.stringify(post),
-        complete: function () {
-            $('#newPostModal').modal('hide');
-            updateTable();
+        let post = {
+            content: $('#addContent').val()
         }
-    })
+
+        $.ajax({
+            url: '/api/post/add',
+            method: 'POST',
+            dataType: 'json',
+            contentType: 'application/json',
+            data: JSON.stringify(post),
+            complete: function () {
+                $('#newPostModal').modal('hide');
+                updateTable();
+            }
+        })
+    }
 }
 
 function removeDataBase() {
@@ -114,4 +124,9 @@ function removeDataBase() {
             updateTable();
         }
     })
+}
+
+//Getting value from textarea
+function getVal(){
+    return document.getElementById('addContent').value;
 }
