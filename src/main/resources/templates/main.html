@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+          crossorigin="anonymous">
+    <title>Главная страница</title>
+</head>
+<body>
+<div class="pos-f-t">
+    <div class="collapse" id="navbarToggleExternalContent">
+        <div class="bg-dark p-4">
+            <h4 class="text-white">Приложение "Блоги"</h4>
+            <div class="text-muted">
+                <p>Проснувшись однажды утром после беспокойного сна, Грегор Замза обнаружил, что он у себя в постели
+                    превратился в страшное насекомое. Лежа на панцирнотвердой спине, он видел, стоило ему приподнять
+                    голову, свой коричневый, выпуклый, разделенный дугообразными чешуйками живот, на верхушке которого
+                    еле держалось готовое вот-вот окончательно сползти одеяло. Его многочисленные, убого тонкие по
+                    сравнению с остальным телом ножки беспомощно копошились у него перед глазами. «Что со мной
+                    случилось?» – подумал он. Это не было сном. Его комната, настоящая, разве что слишком маленькая, но
+                    обычная комната, мирно покоилась в своих четырех хорошо знакомых стенах. Над столом, где были
+                    разложены распакованные образцы сукон – Замза был коммивояжером, – висел портрет, который он недавно
+                    вырезал из иллюстрированного журнала и вставил в красивую золоченую рамку. На портрете была
+                    изображена дама в меховой шляпе и боа, она сидела очень прямо и протягивала зрителю тяжелую меховую
+                    муфту, в которой целиком исчезала ее рука. Затем взгляд Грегора устремился в окно, и пасмурная
+                    погода – слышно было, как по жести подоконника стучат капли дождя – привела его и вовсе в грустное
+                    настроение. «Хорошо бы еще немного поспать и забыть всю эту чепуху», – подумал он, но это было
+                    совершенно неосуществимо, он привык спать на правом боку, а в теперешнем своем
+                </p>
+            </div>
+        </div>
+    </div>
+    <nav class="navbar navbar-dark bg-dark">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent"
+                aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="row">
+            <div class="col">
+                <a class="btn btn-outline-light" href="/" role="button">Main</a>
+            </div>
+            <div class="col">
+                <a class="btn btn-outline-light" href="/logout" role="button">Exit</a>
+            </div>
+        </div>
+    </nav>
+</div>
+
+<!--main container-->
+<div class="col-md-5 mr-auto ml-auto my-5">
+    <div class="row justify-content-end">
+        <div class="col-md-6">
+            <h2>Добро пожаловать в приложение "Блоги"</h2>
+        </div>
+
+        <div class="col-md-6">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#newPostModal">
+                Новый пост
+            </button>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="newPostModal" tabindex="-1" role="dialog" aria-labelledby="newPostModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="newPostModalLabel">Новый пост</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="#" class="text-center" id="addForm">
+                            <div class="form-group">
+                                <label for="addContent" class="col-form-label">Контент</label>
+                                <textarea class="form-control" id="addContent"></textarea>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Отмена</button>
+                        <button type="button" class="btn btn-secondary" id="savePost">Добавить</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">id</th>
+            <th scope="col">date</th>
+            <th scope="col">time</th>
+            <th scope="col">content</th>
+        </tr>
+        </thead>
+        <tbody id="posts">
+        </tbody>
+    </table>
+</div>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+
+<script>
+    $(function () {
+        updateTable();
+        $('#savePost').on('click', event => addPost(event));
+    })
+
+    function updateTable() {
+        $('#posts').empty();
+
+        $.ajax({
+            type: 'GET',
+            url: '/api/post/list/',
+            success: function (postList) {
+                postList.forEach(post =>
+                    $('#posts')
+                        .append("<tr>" +
+                            "<td>" + post.id + "</td>" +
+                            "<td>" + post.date + "</td>" +
+                            "<td>" + post.time + "</td>" +
+                            "<td>" + post.content + "</td>" +
+                            "</tr>"))
+            }
+        });
+    }
+
+    function addPost(e) {
+        e.preventDefault();
+
+        let post = {
+            content: $('#addContent').val()
+        }
+
+        $.ajax({
+            url: '/api/post/add',
+            method: 'POST',
+            dataType: 'json',
+            contentType: 'application/json',
+            data: JSON.stringify(post),
+            complete: function () {
+                $('#newPostModal').modal('hide');
+                updateTable();
+            }
+        })
+    }
+</script>
+</body>
+</html>
