@@ -29,7 +29,7 @@ public class ViewController {
             service.add(new Post(generateString()));
         }
         return new ModelAndView("main")
-                .addObject("postList", service.getAll());
+                .addObject("postList", service.getFirstFive());
     }
 
     public String generateString() {

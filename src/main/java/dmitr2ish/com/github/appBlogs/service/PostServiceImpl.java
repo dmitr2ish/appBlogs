@@ -10,7 +10,7 @@ import java.util.List;
 
 @Service
 @Transactional
-public class PostServiceImpl implements PostService{
+public class PostServiceImpl implements PostService {
     final private PostRepository repository;
 
     @Autowired
@@ -24,7 +24,17 @@ public class PostServiceImpl implements PostService{
     }
 
     @Override
-    public List<Post> getAll() {
-        return repository.getAll();
+    public List<Post> getFirstFive() {
+        return repository.getFirstFive();
+    }
+
+    @Override
+    public List<Post> getNextFive(Long idMin) {
+        return repository.getNextFive(idMin);
+    }
+
+    @Override
+    public boolean deleteAll() {
+        return repository.deleteAll();
     }
 }

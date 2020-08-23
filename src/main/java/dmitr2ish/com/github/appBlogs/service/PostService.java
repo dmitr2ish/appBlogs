@@ -6,5 +6,10 @@ import java.util.List;
 
 public interface PostService {
     Post add(Post post);
-    List<Post> getAll();
+
+    List<Post> getFirstFive();
+
+    List<Post> getNextFive(Long idMin);
+
+    boolean deleteAll();
 }

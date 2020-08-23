@@ -26,12 +26,27 @@ public class PostController {
                 : new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
-    @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public ResponseEntity<List<Post>> getAllPost() {
-        List<Post> list = service.getAll();
+    @RequestMapping(value = "/first", method = RequestMethod.GET)
+    public ResponseEntity<List<Post>> getFirstFive() {
+        List<Post> list = service.getFirstFive();
+        return list != null
+                ? new ResponseEntity<>(list, HttpStatus.OK)
+                : new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+    }
+
+    @RequestMapping(value = "/next/{id}", method = RequestMethod.GET)
+    public ResponseEntity<List<Post>> getNextFive(@PathVariable(value = "id") Long id) {
+        List<Post> list = service.getNextFive(id);
         return !list.isEmpty()
                 ? new ResponseEntity<>(list, HttpStatus.OK)
                 : new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    @DeleteMapping(value = "/delete")
+    public ResponseEntity<?> deleteAll() {
+        return (service.deleteAll())
+                ? new ResponseEntity<>(HttpStatus.OK)
+                : new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
 }

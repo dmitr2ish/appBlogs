@@ -41,7 +41,7 @@
         </button>
         <div class="row">
             <div class="col">
-                <a class="btn btn-outline-light" href="/" role="button">Main</a>
+                <a class="btn btn-outline-light" onclick="removeDataBase()" href="#" role="button">Очистить</a>
             </div>
             <div class="col">
                 <a class="btn btn-outline-light" href="/logout" role="button">Exit</a>
@@ -51,13 +51,13 @@
 </div>
 
 <!--main container-->
-<div class="col-md-5 mr-auto ml-auto my-5">
+<div class="col-md-10 mr-auto ml-auto my-5">
     <div class="row justify-content-end">
-        <div class="col-md-6">
+        <div class="col-md-7 ml-3">
             <h2>Добро пожаловать в приложение "Блоги"</h2>
         </div>
 
-        <div class="col-md-6">
+        <div class="col-md-2">
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#newPostModal">
                 Новый пост
@@ -78,7 +78,7 @@
                     <div class="modal-body">
                         <form action="#" class="text-center" id="addForm">
                             <div class="form-group">
-                                <label for="addContent" class="col-form-label">Контент</label>
+                                <label for="addContent" class="col-form-label">Содержание</label>
                                 <textarea class="form-control" id="addContent"></textarea>
                             </div>
                         </form>
@@ -92,18 +92,10 @@
         </div>
     </div>
 
-    <table class="table table-striped">
-        <thead>
-        <tr>
-            <th scope="col">id</th>
-            <th scope="col">date</th>
-            <th scope="col">time</th>
-            <th scope="col">content</th>
-        </tr>
-        </thead>
-        <tbody id="posts">
-        </tbody>
-    </table>
+    <div id="posts">
+    </div>
+    <div id="next">
+    </div>
 </div>
 
 <!-- Optional JavaScript -->
@@ -117,50 +109,6 @@
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
         crossorigin="anonymous"></script>
 
-<script>
-    $(function () {
-        updateTable();
-        $('#savePost').on('click', event => addPost(event));
-    })
-
-    function updateTable() {
-        $('#posts').empty();
-
-        $.ajax({
-            type: 'GET',
-            url: '/api/post/list/',
-            success: function (postList) {
-                postList.forEach(post =>
-                    $('#posts')
-                        .append("<tr>" +
-                            "<td>" + post.id + "</td>" +
-                            "<td>" + post.date + "</td>" +
-                            "<td>" + post.time + "</td>" +
-                            "<td>" + post.content + "</td>" +
-                            "</tr>"))
-            }
-        });
-    }
-
-    function addPost(e) {
-        e.preventDefault();
-
-        let post = {
-            content: $('#addContent').val()
-        }
-
-        $.ajax({
-            url: '/api/post/add',
-            method: 'POST',
-            dataType: 'json',
-            contentType: 'application/json',
-            data: JSON.stringify(post),
-            complete: function () {
-                $('#newPostModal').modal('hide');
-                updateTable();
-            }
-        })
-    }
-</script>
+<script src="js/script.js"></script>
 </body>
 </html>
