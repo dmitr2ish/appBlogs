@@ -1,5 +1,5 @@
 # appBlogs
-The Blogs app is a standard feed of posts.
+The Blogs app is a standard feed of posts.  
 Используемые технологии:
 
 Java 11
