@@ -26,10 +26,12 @@ JQery\Ajax
 для Windows  
   
 Запуск из командной строки из корневой папки  
-mvnw spring-boot:run для Windows  
+mvnw spring-boot:run 
+  
+для Windows  
   
 Создание и запуск jar файла  
 mvnw clean package  
 cd target  
-java -jar currencyConverter-0.0.1-SNAPSHOT.jar  
+java -jar -0.0.1-SNAPSHOT.jar  
   
